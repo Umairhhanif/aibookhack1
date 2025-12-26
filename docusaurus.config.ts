@@ -8,7 +8,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // GitHub Pages deployment config
-  url: 'https://aibookhack1.vercel.app/',
+  url: 'https://aibookhack1.vercel.app/sitemap.xml',
   baseUrl: '/',
   organizationName: 'your-username',
   projectName: 'book',
@@ -29,7 +29,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/your-username/book/tree/main/',
+          editUrl: 'https://github.com/Umairhhanif/aibookhack1',
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
         },
@@ -57,7 +57,7 @@ const config: Config = {
           label: 'Curriculum',
         },
         {
-          href: 'https://github.com/your-username/book',
+          href: 'https://github.com/Umairhhanif/aibookhack1',
           label: 'GitHub',
           position: 'right',
         },
