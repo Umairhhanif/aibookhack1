@@ -1,0 +1,10 @@
+{
+  "label": "Capstone Project",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Apply everything you've learned in a comprehensive capstone project. Build an integrated Physical AI system from perception to action."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

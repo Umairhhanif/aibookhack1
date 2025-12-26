@@ -1,0 +1,10 @@
+{
+  "label": "Week 12: VLA Models",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Vision-Language-Action models for end-to-end robot control from multimodal inputs."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

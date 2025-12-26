@@ -1,0 +1,10 @@
+{
+  "label": "Week 4: Gazebo Fundamentals",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Introduction to Gazebo Harmonic, SDF worlds, and physics simulation."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

@@ -1,0 +1,10 @@
+{
+  "label": "Week 13: Capstone Integration",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Final integration project combining all modules into a complete Physical AI system."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

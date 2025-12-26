@@ -1,0 +1,10 @@
+{
+  "label": "Week 8: Nav2 Stack",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "ROS 2 Navigation Stack: costmaps, planners, controllers, and behavior trees."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

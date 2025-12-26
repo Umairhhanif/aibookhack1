@@ -1,0 +1,43 @@
+# Git
+.git/
+.gitignore
+
+# Dependencies (will be installed in container)
+node_modules/
+.pnpm-store/
+venv/
+.venv/
+
+# Build artifacts
+build/
+.docusaurus/
+dist/
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Documentation
+*.md
+!README.md
+
+# Spec-Kit Plus
+.specify/
+specs/
+history/
+
+# Tests
+tests/
+*.test.*
+coverage/
+htmlcov/

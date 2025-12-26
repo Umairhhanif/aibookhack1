@@ -1,0 +1,10 @@
+{
+  "label": "Week 11: LLM Reasoning",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Large Language Models for task planning, reasoning, and natural language understanding."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

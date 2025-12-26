@@ -1,0 +1,10 @@
+{
+  "label": "Week 3: Lifecycle and Launch",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Lifecycle nodes, state management, and composable launch files for complex robot systems."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

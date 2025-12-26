@@ -1,0 +1,10 @@
+{
+  "label": "Week 9: Perception Pipeline",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Object detection, segmentation, and 3D perception for autonomous navigation."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

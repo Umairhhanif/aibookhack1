@@ -1,0 +1,10 @@
+{
+  "label": "Week 6: Isaac Sim",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "NVIDIA Isaac Sim for photorealistic simulation, synthetic data generation, and domain randomization."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

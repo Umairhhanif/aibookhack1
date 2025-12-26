@@ -1,0 +1,347 @@
+openapi: 3.0.3
+info:
+  title: Physical AI Book Chatbot API
+  description: |
+    RAG chatbot API for the Physical AI & Humanoid Robotics book.
+    Answers questions exclusively from book content and user-selected text.
+  version: 1.0.0
+  contact:
+    name: Book Support
+servers:
+  - url: https://api.physicalai-book.com
+    description: Production server
+  - url: http://localhost:8000
+    description: Development server
+
+paths:
+  /health:
+    get:
+      summary: Health check
+      operationId: healthCheck
+      tags:
+        - System
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /chat:
+    post:
+      summary: Send a chat message
+      operationId: sendMessage
+      tags:
+        - Chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /chat/sessions:
+    post:
+      summary: Create a new chat session
+      operationId: createSession
+      tags:
+        - Chat
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+      responses:
+        '201':
+          description: Session created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionResponse'
+
+  /chat/sessions/{sessionId}:
+    get:
+      summary: Get session details and history
+      operationId: getSession
+      tags:
+        - Chat
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Session details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionDetailResponse'
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    delete:
+      summary: Delete a chat session
+      operationId: deleteSession
+      tags:
+        - Chat
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Session deleted
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      required:
+        - status
+        - timestamp
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+        timestamp:
+          type: string
+          format: date-time
+        services:
+          type: object
+          properties:
+            qdrant:
+              type: string
+              enum: [up, down]
+            neon:
+              type: string
+              enum: [up, down]
+            openai:
+              type: string
+              enum: [up, down]
+
+    ChatRequest:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: User's question or message
+          minLength: 1
+          maxLength: 2000
+        session_id:
+          type: string
+          format: uuid
+          description: Existing session ID (optional, creates new if not provided)
+        page_context:
+          type: string
+          description: Current page URL for context
+          example: /docs/module-1/week-01/ros2-nodes
+        selected_text:
+          type: string
+          description: User-highlighted text to include as context
+          maxLength: 5000
+
+    ChatResponse:
+      type: object
+      required:
+        - message_id
+        - session_id
+        - response
+        - created_at
+      properties:
+        message_id:
+          type: string
+          format: uuid
+        session_id:
+          type: string
+          format: uuid
+        response:
+          type: string
+          description: Assistant's response
+        citations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Citation'
+        created_at:
+          type: string
+          format: date-time
+        out_of_scope:
+          type: boolean
+          description: True if query was outside book content
+          default: false
+
+    Citation:
+      type: object
+      required:
+        - file_path
+        - section_heading
+        - relevance_score
+      properties:
+        file_path:
+          type: string
+          description: Path to source document
+          example: docs/module-1/week-01/ros2-nodes.md
+        section_heading:
+          type: string
+          description: Section title
+          example: Creating Your First ROS 2 Node
+        relevance_score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Similarity score
+        module_number:
+          type: integer
+          minimum: 1
+          maximum: 4
+        week_number:
+          type: integer
+          minimum: 1
+          maximum: 13
+
+    CreateSessionRequest:
+      type: object
+      properties:
+        page_context:
+          type: string
+          description: Initial page URL
+
+    SessionResponse:
+      type: object
+      required:
+        - session_id
+        - created_at
+      properties:
+        session_id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+
+    SessionDetailResponse:
+      type: object
+      required:
+        - session_id
+        - created_at
+        - messages
+      properties:
+        session_id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        last_active:
+          type: string
+          format: date-time
+        message_count:
+          type: integer
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageHistory'
+
+    MessageHistory:
+      type: object
+      required:
+        - id
+        - role
+        - content
+        - created_at
+      properties:
+        id:
+          type: string
+          format: uuid
+        role:
+          type: string
+          enum: [user, assistant]
+        content:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        citations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Citation'
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error code
+          enum:
+            - invalid_request
+            - session_not_found
+            - rate_limit_exceeded
+            - service_unavailable
+            - internal_error
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          description: Additional error details
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for rate limiting (optional for public use)
+
+tags:
+  - name: Chat
+    description: Chat operations
+  - name: System
+    description: System health and status

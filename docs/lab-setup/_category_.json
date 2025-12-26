@@ -1,0 +1,10 @@
+{
+  "label": "Lab Setup",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "lab-setup/overview"
+  },
+  "collapsible": true,
+  "collapsed": false
+}

@@ -1,0 +1,415 @@
+/**
+ * Animated Icons Styles
+ * CSS animations for curriculum module icons
+ */
+
+/* ========================================
+   Keyframe Animations
+   ======================================== */
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 8px currentColor);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 16px currentColor);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    85%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    90% {
+        transform: scaleY(0.1);
+    }
+}
+
+@keyframes armSwing {
+
+    0%,
+    100% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes scan {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes wobble {
+
+    0%,
+    100% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes soundPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scaleY(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleY(1.2);
+    }
+}
+
+@keyframes typewriter {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.5);
+    }
+}
+
+@keyframes pathDraw {
+    0% {
+        stroke-dashoffset: 100;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ========================================
+   Base Icon Styles
+   ======================================== */
+
+.icon {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+/* ========================================
+   Robot Icon
+   ======================================== */
+
+.robotIcon {
+    animation: float 4s ease-in-out infinite;
+}
+
+.robotBody {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.robotEye {
+    transform-origin: center;
+    animation: blink 4s ease-in-out infinite;
+}
+
+.robotAntenna {
+    animation: glow 2s ease-in-out infinite;
+}
+
+.robotLeftArm {
+    transform-origin: right center;
+    animation: armSwing 2s ease-in-out infinite;
+}
+
+.robotRightArm {
+    transform-origin: left center;
+    animation: armSwing 2s ease-in-out infinite reverse;
+}
+
+/* ========================================
+   Brain Icon
+   ======================================== */
+
+.brainIcon {
+    animation: float 5s ease-in-out infinite;
+}
+
+.brainOutline {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.neuron {
+    animation: glow 2s ease-in-out infinite;
+}
+
+.neuronDelay1 {
+    animation-delay: 0.3s;
+}
+
+.neuronDelay2 {
+    animation-delay: 0.6s;
+}
+
+.neuronDelay3 {
+    animation-delay: 0.9s;
+}
+
+.synapse {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ========================================
+   Sensor Icon
+   ======================================== */
+
+.sensorIcon {
+    animation: float 4s ease-in-out infinite;
+}
+
+.sensorCore {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.wave {
+    animation: wave 2s ease-out infinite;
+}
+
+.waveDelay1 {
+    animation-delay: 0.4s;
+}
+
+.waveDelay2 {
+    animation-delay: 0.8s;
+}
+
+/* ========================================
+   Vision Icon
+   ======================================== */
+
+.visionIcon {
+    animation: float 4s ease-in-out infinite;
+}
+
+.eyeOutline {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.iris {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.pupil {
+    animation: glow 2s ease-in-out infinite;
+}
+
+.scanLine {
+    animation: scan 2s ease-in-out infinite;
+}
+
+/* ========================================
+   Navigation Icon
+   ======================================== */
+
+.navigationIcon {
+    animation: float 4s ease-in-out infinite;
+}
+
+.compassRing {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.compassNeedle {
+    transform-origin: 32px 32px;
+    animation: wobble 3s ease-in-out infinite;
+}
+
+/* ========================================
+   Speech Icon
+   ======================================== */
+
+.speechIcon {
+    animation: float 4s ease-in-out infinite;
+}
+
+.micBody {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.soundWave {
+    animation: soundPulse 1s ease-in-out infinite;
+}
+
+.soundWaveDelay {
+    animation-delay: 0.3s;
+}
+
+/* ========================================
+   LLM Icon
+   ======================================== */
+
+.llmIcon {
+    animation: float 4s ease-in-out infinite;
+}
+
+.chatBubble {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.textLine {
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    animation: pathDraw 1.5s ease-out forwards;
+}
+
+.textLineDelay1 {
+    animation-delay: 0.3s;
+}
+
+.textLineDelay2 {
+    animation-delay: 0.6s;
+}
+
+.sparkle {
+    animation: sparkle 1.5s ease-in-out infinite;
+}
+
+/* ========================================
+   SLAM Icon
+   ======================================== */
+
+.slamIcon {
+    animation: float 4s ease-in-out infinite;
+}
+
+.pathLine {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: pathDraw 2s ease-out forwards;
+}
+
+.waypoint {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.waypointDelay1 {
+    animation-delay: 0.3s;
+}
+
+.waypointDelay2 {
+    animation-delay: 0.6s;
+}
+
+.waypointDelay3 {
+    animation-delay: 0.9s;
+}
+
+/* ========================================
+   Hover Effects
+   ======================================== */
+
+.icon:hover .robotBody,
+.icon:hover .brainOutline,
+.icon:hover .sensorCore,
+.icon:hover .eyeOutline,
+.icon:hover .compassRing,
+.icon:hover .micBody,
+.icon:hover .chatBubble {
+    animation-duration: 1s;
+}
+
+.icon:hover .wave {
+    animation-duration: 1s;
+}
+
+.icon:hover .neuron,
+.icon:hover .pupil,
+.icon:hover .robotAntenna,
+.icon:hover .waypoint {
+    animation-duration: 0.5s;
+}

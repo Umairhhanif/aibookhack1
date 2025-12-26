@@ -1,0 +1,10 @@
+{
+  "label": "Module 3: The AI Robot Brain",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Implement intelligent navigation, SLAM, and perception. Integrate Nav2, VSLAM, and modern AI techniques for autonomous robot behavior."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

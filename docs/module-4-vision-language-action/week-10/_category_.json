@@ -1,0 +1,10 @@
+{
+  "label": "Week 10: Speech Integration",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Whisper speech recognition and voice command integration for human-robot interaction."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

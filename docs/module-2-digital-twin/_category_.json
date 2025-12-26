@@ -1,0 +1,10 @@
+{
+  "label": "Module 2: Building the Digital Twin",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Build and simulate robots in virtual worlds using Gazebo, Unity, and NVIDIA Isaac Sim. Create high-fidelity physics simulations for development and testing."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

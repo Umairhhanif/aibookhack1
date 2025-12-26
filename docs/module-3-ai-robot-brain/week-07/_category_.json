@@ -1,0 +1,10 @@
+{
+  "label": "Week 7: Visual SLAM",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Visual Simultaneous Localization and Mapping with depth cameras and point clouds."
+  },
+  "collapsible": true,
+  "collapsed": true
+}

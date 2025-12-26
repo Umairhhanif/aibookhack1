@@ -1,0 +1,10 @@
+{
+  "label": "Week 1: ROS 2 Foundations",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Introduction to ROS 2 architecture, nodes, topics, and the publisher-subscriber pattern."
+  },
+  "collapsible": true,
+  "collapsed": true
+}
