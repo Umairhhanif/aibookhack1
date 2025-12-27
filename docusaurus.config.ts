@@ -8,7 +8,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // GitHub Pages deployment config
-  url: 'https://aibookhack1.vercel.app/sitemap.xml',
+  url: 'https://aibookhack1.vercel.app',
   baseUrl: '/',
   organizationName: 'your-username',
   projectName: 'book',
