@@ -676,11 +676,11 @@ def test_query(query: str, config: Config, top_k: int = 5) -> list[dict]:
         api_key=config.qdrant_api_key,
     )
 
-    results = client.search(
+    results = client.query_points(
         collection_name=config.collection_name,
-        query_vector=query_vector,
+        query=query_vector,
         limit=top_k,
-    )
+    ).points
 
     # Format results
     formatted_results = []
